@@ -13,6 +13,12 @@ set(VEHICLE_VALUES "kia_soul;kia_soul_ev;kia_niro" CACHE STRING
 
 set_property(CACHE VEHICLE PROPERTY STRINGS ${VEHICLE_VALUES})
 
+#HJK_250313
+if ("${VEHICLE}" STREQUAL "")
+  set(VEHICLE "kia_soul_ev")
+  message(STATUS "No VEHICLE specified, defaulting to 'kia_soul_ev'")
+endif()
+
 message(STATUS "VEHICLE='${VEHICLE}'")
 
 if (";${VEHICLE_VALUES};" MATCHES ";${VEHICLE};")
