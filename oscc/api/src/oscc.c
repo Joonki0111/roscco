@@ -150,17 +150,16 @@ oscc_result_t oscc_close( unsigned int channel )
 oscc_result_t oscc_enable( void )
 {
     oscc_result_t result = OSCC_ERROR;
-
-
-    result = oscc_enable_brakes( );
+    
+    result = oscc_enable_steering( ); //HJK
 
     if ( result == OSCC_OK )
     {
-        result = oscc_enable_throttle( );
+        result = oscc_enable_throttle( ); //HJK
 
         if (result == OSCC_OK )
         {
-            // result = oscc_enable_steering( ); // HJK
+            result = oscc_enable_brakes( ); //HJK
         }
     }
 
