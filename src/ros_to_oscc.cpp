@@ -23,15 +23,15 @@ RosToOscc::RosToOscc(const rclcpp::NodeOptions & node_options) : Node("ros_to_os
 
   topic_brake_command_ =
     this->create_subscription<roscco_msgs::msg::BrakeCommand>(
-      "brake_command", rclcpp::QoS(1), std::bind(&RosToOscc::brakeCommandCallback,this,std::placeholders::_1));
+      "/roscco/brake_cmd", rclcpp::QoS(1), std::bind(&RosToOscc::brakeCommandCallback,this,std::placeholders::_1));
 
   topic_steering_command_ =
     this->create_subscription<roscco_msgs::msg::SteeringCommand>(
-      "steering_command", rclcpp::QoS(1), std::bind(&RosToOscc::steeringCommandCallback, this,std::placeholders::_1));
+      "/roscco/steering_cmd", rclcpp::QoS(1), std::bind(&RosToOscc::steeringCommandCallback, this,std::placeholders::_1));
 
   topic_throttle_command_ =
     this->create_subscription<roscco_msgs::msg::ThrottleCommand>(
-      "throttle_command", rclcpp::QoS(1), std::bind(&RosToOscc::throttleCommandCallback, this,std::placeholders::_1));
+      "/roscco/throttle_cmd", rclcpp::QoS(1), std::bind(&RosToOscc::throttleCommandCallback, this,std::placeholders::_1));
 
   topic_enable_disable_command_ =
     this->create_subscription<roscco_msgs::msg::EnableDisable>(
