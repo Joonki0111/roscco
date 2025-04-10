@@ -16,7 +16,6 @@
   <depend>rclcpp</depend>
   <depend>rclcpp_components</depend>
   <depend>std_msgs</depend>
-  <depend>autoware_can_msgs</depend>
   <depend>roscco_msgs</depend>
   <depend>autoware_auto_vehicle_msgs</depend>
 
