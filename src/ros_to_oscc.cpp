@@ -35,9 +35,9 @@ RosToOscc::RosToOscc(const rclcpp::NodeOptions & node_options) : Node("ros_to_os
 
   topic_enable_disable_command_ =
     this->create_subscription<roscco_msgs::msg::EnableDisable>(
-      "enable_disable", rclcpp::QoS(1), std::bind(&RosToOscc::enableDisableCallback, this,std::placeholders::_1));
+      "/roscco/enable_disable", rclcpp::QoS(1), std::bind(&RosToOscc::enableDisableCallback, this,std::placeholders::_1));
 
-  topic_time_ =this->create_publisher<std_msgs::msg::Header>("time_from_roscco", rclcpp::QoS(1));
+  topic_time_ =this->create_publisher<std_msgs::msg::Header>("/roscco/clock", rclcpp::QoS(1));
 
   timer_ = this->create_wall_timer(500ms, std::bind(&RosToOscc::timer_callback, this));
 
