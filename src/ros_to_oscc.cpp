@@ -37,7 +37,7 @@ RosToOscc::RosToOscc(const rclcpp::NodeOptions & node_options) : Node("ros_to_os
     this->create_subscription<roscco_msgs::msg::EnableDisable>(
       "/roscco/enable_disable", rclcpp::QoS(1), std::bind(&RosToOscc::enableDisableCallback, this,std::placeholders::_1));
 
-  topic_time_ =this->create_publisher<std_msgs::msg::Header>("/roscco/clock", rclcpp::QoS(1));
+  topic_time_ =this->create_publisher<rosgraph_msgs::msg::Clock>("/roscco/clock", rclcpp::QoS(1));
 
   timer_ = this->create_wall_timer(500ms, std::bind(&RosToOscc::timer_callback, this));
 
@@ -115,9 +115,9 @@ void RosToOscc::enableDisableCallback(const roscco_msgs::msg::EnableDisable& msg
 
 void RosToOscc::timer_callback()
 {
-  std_msgs::msg::Header msg;
-  msg.stamp = get_clock()->now();
-  topic_time_ -> publish(msg);
+  rosgraph_msgs::msg::Clock clock_msg;
+  clock_msg.clock = get_clock()->now();
+  topic_time_ -> publish(clock_msg);
 }
 
 } // namespace roscco_component

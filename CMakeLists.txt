@@ -5,7 +5,7 @@ project(roscco)
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclcpp_components REQUIRED)
-find_package(std_msgs REQUIRED)
+find_package(rosgraph_msgs REQUIRED)
 find_package(roscco_msgs REQUIRED)
 
 include(oscc/api/OsccConfig.cmake)
@@ -37,7 +37,7 @@ ament_target_dependencies(
   ros_to_oscc_node 
   rclcpp
   rclcpp_components
-  std_msgs 
+  rosgraph_msgs 
   roscco_msgs
 )
 

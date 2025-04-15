@@ -14,7 +14,7 @@ extern "C" {
 #include <roscco_msgs/msg/enable_disable.hpp>
 #include <roscco_msgs/msg/steering_command.hpp>
 #include <roscco_msgs/msg/throttle_command.hpp>
-#include <std_msgs/msg/header.hpp>
+#include <rosgraph_msgs/msg/clock.hpp>
 
 namespace roscco_component
 {
@@ -79,7 +79,7 @@ private:
   rclcpp::Subscription<roscco_msgs::msg::ThrottleCommand>::SharedPtr topic_throttle_command_;
   rclcpp::Subscription<roscco_msgs::msg::EnableDisable>::SharedPtr topic_enable_disable_command_;
 
-  rclcpp::Publisher<std_msgs::msg::Header>::SharedPtr topic_time_;
+  rclcpp::Publisher<rosgraph_msgs::msg::Clock>::SharedPtr topic_time_;
 
   rclcpp::TimerBase::SharedPtr timer_;
 
